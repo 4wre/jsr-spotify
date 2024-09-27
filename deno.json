@@ -1,0 +1,22 @@
+{
+	"name": "@inijeje/spotify",
+	"version": "1.0.0-alpha.1",
+	"exports": {
+		".": "./mod.ts"
+	},
+	"exclude": [
+		".*/**"
+	],
+	"tasks": {
+		"dev": "deno run --watch -A --env mod_test.ts"
+	},
+	"license": "MIT",
+	"fmt": {
+		"indentWidth": 4,
+		"useTabs": true
+	},
+	"imports": {
+		"@std/encoding": "jsr:@std/encoding@^1.0.5",
+		"@std/http": "jsr:@std/http@^1.0.7"
+	}
+}
