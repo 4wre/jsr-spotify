@@ -69,21 +69,21 @@ export type APISearchType =
 	| "audiobook";
 export interface APISearchOptions {
 	/** An ISO 3166-1 alpha-2 country code. */
-	market: string;
+	market?: string;
 	/**
 	 * The maximum number of results to return in each item type.
 	 * Range: 0 -50
 	 */
-	limit: number;
+	limit?: number;
 	/**
 	 * The index of the first result to return. Use with limit to get the next page of search results.
 	 * Range: 0 - 1000
 	 */
-	offset: number;
+	offset?: number;
 	/**
 	 * If include_external=audio is specified it signals that the client can play externally hosted audio content, and marks the content as playable in the response.
 	 */
-	include_external: "audio";
+	include_external?: "audio";
 }
 export type APISpotifyRestrictionReason = "market" | "product" | "explicit";
 export type APIReleaseDatePrecision = "year" | "month" | "day";

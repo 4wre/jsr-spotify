@@ -20,19 +20,28 @@ export class API {
 		query: string,
 		/** Item types to search across. */
 		type: APISearchType[],
-		options: APISearchOptions,
+		options?: APISearchOptions,
 	) {
 		const searchParams = new URLSearchParams({
 			q: query,
 			type: type.join(","),
-			market: options.market,
-			limit: String(options.limit),
-			offset: String(options.offset),
-			include_external: options.include_external,
 		});
 
+		if (options?.include_external) {
+			searchParams.set("include_external", options.include_external);
+		}
+		if (options?.limit) {
+			searchParams.set("limit", String(options.limit));
+		}
+		if (options?.market) {
+			searchParams.set("market", options.market);
+		}
+		if (options?.offset) {
+			searchParams.set("offset", String(options.offset));
+		}
+
 		const data: APISearchResult = await this.rest.request(
-			`/search${searchParams.toString()}`,
+			`/search?${searchParams.toString()}`,
 			"GET",
 		);
 		return data;

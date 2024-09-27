@@ -24,12 +24,12 @@ Deno.serve(async (req) => {
 			console.log("masuk callback");
 			const code = url.searchParams.get("code")!;
 			const data = await app.tokenExchange({ code, redirectUri });
-			console.log("berhasil authorize");
+
 			const user = new API({ token: data.access_token });
-			const playlistItems = await user.playlists.getItems(
-				Deno.env.get("PLAYLIST_ID")!,
-			);
-			console.log(playlistItems);
+			const result = await user.search("loch abiki", ["track"], {
+				limit: 1,
+			});
+			console.log(result);
 
 			return new Response("OK");
 		}

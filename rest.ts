@@ -26,6 +26,7 @@ export class REST {
 				body: options?.body,
 			},
 		);
+		console.log(response.url);
 
 		if (isSuccessfulStatus(response.status)) {
 			return await response.json() as T;
